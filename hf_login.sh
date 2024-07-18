@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-MYTOKEN="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"
+MYTOKEN="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"
 
 if [ "$1" ]; then
     MYTOKEN=$1
