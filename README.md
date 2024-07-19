@@ -11,7 +11,7 @@ git clone git@github.com:ARG-NCTU/uav-usv-traj.git
 ```
 
 ### 3. Usage
-#### 3-1. Preprocessing data (Optional): 
+#### 3.1. Preprocessing data (Optional): 
 run python script to get base timestamps with method 1 (kml files from ardupilot px4):
 ```
 python3 get-basetimestamps.py --kml_dir ./data/ardupilot-logs/kmls --method 1 --csv ./data/ardupilot-logs-timestamps.txt
@@ -21,7 +21,7 @@ run python script to get base timestamps with method 2 (6897 UAV's trajaectories
 python3 get-basetimestamps.py --kml_dir ./data/raw_kml --method 2 --csv ./data/uav-dataset-timestamps.txt
 ```
 
-#### 3-2. Run the notebooks 
+#### 3.2. Run the notebooks 
 run pyivp's docker 
 ```
 source docker_run.sh
@@ -36,4 +36,15 @@ source hf_login.sh
 run the jupyter notebook
 ```
 source jupyter.sh
+```
+
+#### 3.3. Chat with GPT API
+run pyivp's docker 
+```
+source docker_run.sh
+```
+
+run streamlit api to select gpt model, upload csv file and ask question
+```
+streamlit run langchain_csv.py
 ```
