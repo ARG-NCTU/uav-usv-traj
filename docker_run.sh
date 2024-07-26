@@ -37,6 +37,7 @@ docker run \
     -e DISPLAY \
     -e QT_X11_NO_MITSHM=1 \
     -e XAUTHORITY=$XAUTH \
+    -e OPENAI_API_KEY=$OPENAI_API_KEY \
     -v "$XAUTH:$XAUTH" \
     -v "$HOSTHOME:/home/arg/uav-usv-traj" \
     -v "/tmp/.X11-unix:/tmp/.X11-unix" \
