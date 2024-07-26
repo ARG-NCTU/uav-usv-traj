@@ -60,3 +60,6 @@ run streamlit api to select gpt model, upload csv file and ask question
 ```
 streamlit run langchain_csv.py
 ```
+
+Example question:
+What is the average of all of all distance of trajectories? Hint: Use for loop to sum all distance of trajectories and division by number of trajectory. DO NOT use sum function of pandas.
