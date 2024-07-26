@@ -2,8 +2,20 @@
 ## This repo will use **movingpandas** for plotting the USV and UAV's trajaectory.
 
 ### 1. Prepare dataset
-Download raw kml files of 6897 UAV's trajaectories dataset from [NAS](http://gofile.me/773h8/lDHkwDMWv).
+Make the data directory to prepare dataset.
+```
+cd ~/uav-usv-traj
+mkdir data
+cd data
+```
+
+Run this command to download raw kml files of 6897 UAV's trajaectories dataset from NAS.
+```
+wget ftp://140.113.148.83/arg-projectfile-download/uav-usv-traj/raw_kml.zip
+```
+
 Or, collect your own trajaectory data. This [link](https://docs.google.com/document/d/1mWLEjzz1vDetMLI1GxP4AXXHkgWak5V9Ur3kOQ9WKCw/edit?usp=sharing) guides you to get kml files from ardupilot px4. Converted result will be like this [link](http://gofile.me/773h8/XKIs8EA2K). 
+
 
 ### 2. Clone the repo
 ```
