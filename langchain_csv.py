@@ -34,9 +34,17 @@ def main():
         csv_string = csv_data.to_csv(index=False)
         csv_file_like = StringIO(csv_string)
 
+        # Read the prompt from the "prompt.txt" file
+        prompt_text = ""
+        try:
+            with open("prompt.txt", "r") as prompt_file:
+                prompt_text = prompt_file.read()
+        except FileNotFoundError:
+            st.error("The 'prompt.txt' file was not found. Please make sure it is in the correct location.")
+
         user_question = st.text_input("Ask a question about your CSV: ")
 
-        if user_question:
+        if user_question and prompt_text:
             with st.spinner(text="In progress..."):
                 # Determine which class to use based on the selected model
                 if selected_model == "gpt-3.5-turbo-instruct":
@@ -50,7 +58,10 @@ def main():
                     verbose=True,
                     allow_dangerous_code=True
                 )
-                response = agent.run(user_question)
+
+                # Combine the prompt text with the user question
+                combined_question = f"{prompt_text}\n\n{user_question}"
+                response = agent.run(combined_question)
                 st.write(response)
 
 if __name__ == "__main__":
