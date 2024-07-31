@@ -1,9 +1,18 @@
+# CSV description
+There are 6 fields in this csv file:
+1. Trajectory_file_path: This field contains the path to the KML file that stores the flight trajectory data.
+2. Trajectory_id: This field represents the unique identifier for each flight.
+3. Longtitude: This field represents the longitude of the central point of the flight trajectory.
+4. Latitude: This field represents the latitude of the central point of the flight trajectory.
+5. Total_distance: This field indicates the total length of the flight trajectory, with the unit being meters (m). If the spraying width is 1 meter, this value also represents the area covered by the pesticide spraying.
+6. Timestamp: This field represents the start time of the flight.
+
 # Function you can use
 Please avoid using pandas or other build-in function since the csv file is big that might lead to program termination. 
 Please convert specific column to list acoording to question input.
 
 # Fewshot example
-Please refer this two examples:
+Please refer these 3 examples:
 
 ####################################################################################################
 
