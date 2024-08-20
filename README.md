@@ -83,13 +83,13 @@ The trajectories in the period from 2023/07/16 9:00AM to 2023/07/16 9:30AM are:
 The trajectory with the shortest distance in the period from 2023/07/16 9:00AM to 2023/07/16 9:30AM is './data/raw_kml/飛行軌跡_20230716091811_R4619961334.kml' with a total distance of 15601.42845229849 meters.
 ```
 
-#### 3.4. Click the location on map to get the time stat of nearby trajectories
+#### 3.4. Click the location on map to get the time stats of nearby trajectories
 run pyivp's docker 
 ```
 source docker_run.sh
 ```
 
-run streamlit api to select gpt model, upload csv file and ask question
+run streamlit api to upload csv file, click the location, select number of trajectories to get time stats
 ```
 streamlit run folium_map_csv.py
 ```
