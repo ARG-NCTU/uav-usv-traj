@@ -1,7 +1,12 @@
 # USV and UAV Trajectory Visualization
 ## This repo will use **movingpandas** for plotting the USV and UAV's trajaectory.
 
-### 1. Prepare dataset
+### 1. Clone the repo
+```
+git clone git@github.com:ARG-NCTU/uav-usv-traj.git
+```
+
+### 2. Prepare dataset
 Make the data directory to prepare dataset.
 ```
 cd ~/uav-usv-traj
@@ -13,16 +18,9 @@ Run this command to download raw kml files of 6897 UAV's trajaectories dataset f
 ```
 wget ftp://140.113.148.83/arg-projectfile-download/uav-usv-traj/raw_kml.zip
 unzip raw_kml.zip
-mv raw_kml ~/uav-usv-traj/data
 ```
 
 Or, collect your own trajaectory data. This [link](https://docs.google.com/document/d/1mWLEjzz1vDetMLI1GxP4AXXHkgWak5V9Ur3kOQ9WKCw/edit?usp=sharing) guides you to get kml files from ardupilot px4. Converted result will be like this [link](http://gofile.me/773h8/XKIs8EA2K). 
-
-
-### 2. Clone the repo
-```
-git clone git@github.com:ARG-NCTU/uav-usv-traj.git
-```
 
 ### 3. Usage
 #### 3.1. Preprocessing data
@@ -83,4 +81,15 @@ The trajectories in the period from 2023/07/16 9:00AM to 2023/07/16 9:30AM are:
 3. Which trajectory in the period from 2023/07/16 9:00AM to 2023/07/16 9:30AM is the shortest?
 ```
 The trajectory with the shortest distance in the period from 2023/07/16 9:00AM to 2023/07/16 9:30AM is './data/raw_kml/飛行軌跡_20230716091811_R4619961334.kml' with a total distance of 15601.42845229849 meters.
+```
+
+#### 3.4. Click the location on map to get the time stat of nearby trajectories
+run pyivp's docker 
+```
+source docker_run.sh
+```
+
+run streamlit api to select gpt model, upload csv file and ask question
+```
+streamlit run folium_map_csv.py
 ```
