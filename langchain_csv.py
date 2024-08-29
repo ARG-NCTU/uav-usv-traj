@@ -28,41 +28,36 @@ def main():
     
     selected_model = st.selectbox("Select a model", model_options)
 
-    csv_file = st.file_uploader("Upload a CSV file", type="csv")
-    if csv_file is not None:
-        csv_data = pd.read_csv(csv_file)
-        csv_string = csv_data.to_csv(index=False)
-        csv_file_like = StringIO(csv_string)
+    csv_data = pd.read_csv("data/uav-csv/traj_ex.csv")
+    csv_string = csv_data.to_csv(index=False)
+    csv_file_like = StringIO(csv_string)
 
-        # Read the prompt from the "prompt.txt" file
-        prompt_text = ""
-        try:
-            with open("prompt.txt", "r") as prompt_file:
-                prompt_text = prompt_file.read()
-        except FileNotFoundError:
-            st.error("The 'prompt.txt' file was not found. Please make sure it is in the correct location.")
+    # Read the prompt from the "prompt.txt" file
+    prompt_text = ""
+    try:
+        with open("prompt.txt", "r") as prompt_file:
+            prompt_text = prompt_file.read()
+    except FileNotFoundError:
+        st.error("The 'prompt.txt' file was not found. Please make sure it is in the correct location.")
 
-        user_question = st.text_input("Ask a question about your CSV: ")
+    with st.spinner(text="In progress..."):
+        # Determine which class to use based on the selected model
+        if selected_model == "gpt-3.5-turbo-instruct":
+            llm = OpenAI(api_key=os.environ["OPENAI_API_KEY"], model_name=selected_model, temperature=0)
+        else:
+            llm = ChatOpenAI(api_key=os.environ["OPENAI_API_KEY"], model=selected_model, temperature=0)
+        
+        agent = create_csv_agent(
+            llm,
+            csv_file_like,
+            verbose=True,
+            allow_dangerous_code=True
+        )
 
-        if user_question and prompt_text:
-            with st.spinner(text="In progress..."):
-                # Determine which class to use based on the selected model
-                if selected_model == "gpt-3.5-turbo-instruct":
-                    llm = OpenAI(api_key=os.environ["OPENAI_API_KEY"], model_name=selected_model, temperature=0)
-                else:
-                    llm = ChatOpenAI(api_key=os.environ["OPENAI_API_KEY"], model=selected_model, temperature=0)
-                
-                agent = create_csv_agent(
-                    llm,
-                    csv_file_like,
-                    verbose=True,
-                    allow_dangerous_code=True
-                )
-
-                # Combine the prompt text with the user question
-                combined_question = f"{prompt_text}\n\n{user_question}"
-                response = agent.run(combined_question)
-                st.write(response)
+        # Combine the prompt text with the user question
+        combined_question = f"{prompt_text}"
+        response = agent.run(combined_question)
+        st.write(response)
 
 if __name__ == "__main__":
     main()

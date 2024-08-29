@@ -35,7 +35,7 @@ print('The average distance of all trajectories is', average_distance, 'meters.'
 
 ####################################################################################################
 
-# Example 2: Which distance of the trajectory is the longest??
+# Example 2: Which distance of the trajectory is the longest?
 import pandas as pd
 data = pd.read_csv("data/uav-csv/ALL.csv")
 df = pd.DataFrame(data)

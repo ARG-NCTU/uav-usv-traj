@@ -6,7 +6,7 @@ def get_basetimestamps_method1(kml_dir):
     timestamps = []
     for filename in os.listdir(kml_dir):
         if filename.endswith(".kml"):
-            # ex: convert "log_4_2024-7-6-16-49-04.kml" to "2024-07-06T16:49:04+00:00"
+            # ex: convert "log_4_2024-7-6-16-49-04.kml" to "2024-07-06T16:49:04"
             time = filename.split('.')[0].split('_')[2]
             year = time.split('-')[0]
             month = int(time.split('-')[1])
@@ -14,7 +14,7 @@ def get_basetimestamps_method1(kml_dir):
             hour = int(time.split('-')[3])
             minute = int(time.split('-')[4])
             second = int(time.split('-')[5])
-            timestamp = year + '-' + f'{month:02}' + '-' + f'{day:02}' + 'T' + f'{hour:02}' + ':' + f'{minute:02}' + ':' + f'{second:02}' + '+00:00'
+            timestamp = year + '-' + f'{month:02}' + '-' + f'{day:02}' + 'T' + f'{hour:02}' + ':' + f'{minute:02}' + ':' + f'{second:02}'
             timestamps.append(timestamp)
 
     # sort timestamps with increasing order based on year, month, day, hour, minute, second accordingly
@@ -26,7 +26,7 @@ def get_basetimestamps_method2(kml_dir):
     timestamps = []
     for filename in os.listdir(kml_dir):
         if filename.endswith(".kml"):
-            # ex: convert "飛行軌跡_20230716070634_R8039938565.kml" to "2023-07-16T07:06:34+00:00"
+            # ex: convert "飛行軌跡_20230716070634_R8039938565.kml" to "2023-07-16T07:06:34"
             time = filename.split('.')[0].split('_')[1]
             year = time[0:4]
             month = int(time[4:6])
@@ -34,7 +34,7 @@ def get_basetimestamps_method2(kml_dir):
             hour = int(time[8:10])
             minute = int(time[10:12])
             second = int(time[12:14])
-            timestamp = year + '-' + f'{month:02}' + '-' + f'{day:02}' + 'T' + f'{hour:02}' + ':' + f'{minute:02}' + ':' + f'{second:02}' + '+00:00'
+            timestamp = year + '-' + f'{month:02}' + '-' + f'{day:02}' + 'T' + f'{hour:02}' + ':' + f'{minute:02}' + ':' + f'{second:02}'
             timestamps.append(timestamp)
 
     # sort timestamps with increasing order based on year, month, day, hour, minute, second accordingly
