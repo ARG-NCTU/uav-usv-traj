@@ -50,7 +50,7 @@ run the jupyter notebook
 source jupyter.sh
 ```
 
-#### 3.3. Chat with GPT API
+#### 3.3. Chat with GPT API and tarjectory analysis
 run pyivp's docker 
 ```
 source docker_run.sh
@@ -61,29 +61,14 @@ run streamlit api to select gpt model, upload csv file and ask question
 streamlit run langchain_csv.py
 ```
 
-Example questions & answers:
+Example question & answer:
 
-1. Which trajectory is the shortest?
+Which trajectory in the period from 2023/07/16 9:30AM to 2023/07/16 10:00AM is the shortest?
 ```
-The shortest trajectory is the one with the file path './data/raw_kml/飛行軌跡_20230907090358_R8061397035.kml', trajectory id '2754', longitude '120.44292709251084', latitude '23.38773020975339', total distance '14725.455573437395', and timestamp '2023-09-07T09:03:58+00:00'.
-```
-
-
-2. Which trajectories are in the period from 2023/07/16 9:00AM to 2023/07/16 9:30AM?
-```
-The trajectories in the period from 2023/07/16 9:00AM to 2023/07/16 9:30AM are:
-
-['./data/raw_kml/飛行軌跡_20230716091811_R4619961334.kml', '9', '120.41166073512986', '23.380268865630217', '15601.42845229849', '2023-07-16T09:18:11+00:00']
-['./data/raw_kml/飛行軌跡_20230716092437_R0005495281.kml', '10', '120.41145573758638', '23.380245558330817', '15835.80406830444', '2023-07-16T09:24:37+00:00']
+The shortest trajectory in the period from 2023/07/16 9:30AM to 2023/07/16 10:00AM is the one with the file path "./data/uav-csv/飛行軌跡_20230716093620_R0116350320.csv".
 ```
 
-
-3. Which trajectory in the period from 2023/07/16 9:00AM to 2023/07/16 9:30AM is the shortest?
-```
-The trajectory with the shortest distance in the period from 2023/07/16 9:00AM to 2023/07/16 9:30AM is './data/raw_kml/飛行軌跡_20230716091811_R4619961334.kml' with a total distance of 15601.42845229849 meters.
-```
-
-#### 3.4. Click the location on map and
+#### 3.4. Click the location on map and tarjectory analysis
 run pyivp's docker 
 ```
 source docker_run.sh

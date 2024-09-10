@@ -14,7 +14,6 @@ st.header("Trajectory Analysis To Generate Custom Exploration Pattern Block Beha
 ####################################################################################################
 
 # Load ALL trajectories
-import pandas as pd
 data = pd.read_csv("data/uav-csv/ALL.csv")
 df_all = pd.DataFrame(data)
 df_all_split = df_all['Trajectory_file_path;Trajectory_id;Longitude;Latitude;Total_distance;Timestamp'].str.split(';', expand=True)
@@ -107,7 +106,7 @@ if "Location" in selected_options and "Total distance" in selected_options:
 
         # Then sort by total distance
         analysis_options = ["shortest", "longest"]
-        selected_analysis = st.selectbox("Select the total distance analysis type:", analysis_options, index=0)
+        selected_analysis = st.selectbox("Select the total distance analysis type:", analysis_options, index=1)
 
         if selected_analysis == "shortest":
             df_all_filtered = df_all_filtered.nsmallest(len(df_all_filtered), 'Total_distance').copy()
