@@ -34,29 +34,23 @@ python3 get-basetimestamps.py --kml_dir ./data/ardupilot-logs/kmls --method 1 --
 ```
 
 #### 3.2. Run the notebooks 
-run pyivp's docker 
+Run pyivp's docker 
 ```
 source docker_run.sh
 ```
-you will run the argnctu/pyivp:latest docker image and the current directory will be mounted to /workspace.
 
-**loging hugging face with token**: 
-```
-source hf_login.sh
-```
-
-run the jupyter notebook
+Run the jupyter notebook
 ```
 source jupyter.sh
 ```
 
 #### 3.3. Chat with GPT API and tarjectory analysis
-run pyivp's docker 
+Run pyivp's docker 
 ```
 source docker_run.sh
 ```
 
-run streamlit api to select gpt model, upload csv file and ask question
+Run streamlit api to select gpt model and ask question
 ```
 streamlit run langchain_csv.py
 ```
@@ -68,13 +62,35 @@ Which trajectory in the period from 2023/07/16 9:30AM to 2023/07/16 10:00AM is t
 The shortest trajectory in the period from 2023/07/16 9:30AM to 2023/07/16 10:00AM is the one with the file path "./data/uav-csv/飛行軌跡_20230716093620_R0116350320.csv".
 ```
 
-#### 3.4. Click the location on map and tarjectory analysis
-run pyivp's docker 
+#### 3.4. Click the location on map and time analysis
+Run pyivp's docker 
 ```
 source docker_run.sh
 ```
 
-run streamlit api to analysis trajectories
+Run streamlit api to analysis trajectories
+```
+streamlit run folium_time_analysis.py
+```
+
+#### 3.5. Click the location on map and tarjectory analysis
+Run pyivp's docker 
+```
+source docker_run.sh
+```
+
+Run streamlit api to analysis trajectories
 ```
 streamlit run folium_traj_analysis.py
+```
+
+#### 3.6. Visualize time stats of tarjectory analysis
+Run pyivp's docker 
+```
+source docker_run.sh
+```
+
+Run streamlit api to analysis trajectories
+```
+python3 time_stats.py
 ```
